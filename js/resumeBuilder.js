@@ -10,9 +10,11 @@ var bio = {
 	},
 	"welcomeMessage" : "Hello World!  I have a new identity!",
 	"skills" : [
-		"teaching", "coaching", "consultative selling", "JS", "HTML & CSS"],
+		"teaching","coaching","consultative selling","JS","HTML & CSS"
+	],
 	"bioPic" : "images/me.jpg",
-};
+	"display" : "function taking no parameters"
+}
 
 var formattedName = HTMLheaderName.replace("%data%", bio.Name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.Role);
@@ -68,7 +70,8 @@ var education = {
 			"dates": "1985",
 			"url": "www.elgin.edu"
 		}
-	],
+	]
+	,
 	"onlineCourses": [
 		{
 			"title": "JavaScript Basics",
