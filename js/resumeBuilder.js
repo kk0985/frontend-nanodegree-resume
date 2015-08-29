@@ -13,7 +13,6 @@ var bio = {
 		"teaching", "coaching", "consultative selling", "JS", "HTML & CSS"],
 	"bioPic" : "images/me.jpg",
 };
-display: function
 
 var formattedName = HTMLheaderName.replace("%data%", bio.Name);
 var formattedRole = HTMLheaderRole.replace("%data%", bio.Role);
@@ -58,7 +57,6 @@ var work = {
 		}
 	]
 }
-display: function
 
 var education = {
 	"schools" : [
@@ -86,14 +84,13 @@ var education = {
 		}
 	]
 }
-display: function
-
 
 $("#footerContacts").append(formattedmobile);
 $("#footerContacts").append(formattedemail);
 $("#footerContacts").append(formattedgithub);
 $("#footerContacts").append(formattedtwitter);
 $("#footerContacts").append(formattedlocation);
+
 
 
 
