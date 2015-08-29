@@ -1,3 +1,11 @@
+var name = "Kris Klingberg";
+var formattedName = HTMLheaderName.replace("%data%", name);
+var role = "Web Developer";
+var formattedRole = HTMLheaderRole.replace("%data%", role);
+
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+
 var bio = {
 	"Name" : "Kris Klingberg",
 	"Role" : "Web Developer",
@@ -16,6 +24,24 @@ var bio = {
 	"display" : "function taking no parameters"
 }
 
+
+
+var mobile = "678-427-1056";
+var formattedmobile = HTMLmobile.replace("%data%", mobile);
+var email = "kris.klingberg@gmail.com";
+var formattedemail = HTMLemail.replace("%data%", email);
+var github = "kk0985";
+var formattedgithub = HTMLgithub.replace("%data%", github);
+var twitter = "@kkling01";
+var formattedtwitter = HTMLtwitter.replace("%data%", twitter);
+var locale = "Atlanta";
+var formattedlocation = HTMLlocation.replace("%data%", locale);
+
+$("#topContacts").append(formattedmobile);
+$("#topContacts").append(formattedemail);
+$("#topContacts").append(formattedgithub);
+$("#topContacts").append(formattedtwitter);
+$("#topContacts").append(formattedlocation);
 
 var work = {
 "jobs" : [
@@ -66,36 +92,13 @@ var education = {
 
 var projects
 
-var name = "Kris Klingberg"
-var formattedName = HTMLheaderName.replace("%data%", name);
+$("#footerContacts").append(formattedmobile);
+$("#footerContacts").append(formattedemail);
+$("#footerContacts").append(formattedgithub);
+$("#footerContacts").append(formattedtwitter);
+$("#footerContacts").append(formattedlocation);
 
-var role = "Web Developer"
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-
-var mobile = "678-427-1056"
-var formattedmobile = HTMLmobile.replace("%data%", mobile);
-
-var email = "kris.klingberg@gmail.com"
-var formattedemail = HTMLemail.replace("%data%", email);
-
-var github = "kk0985"
-var formattedgithub = HTMLgithub.replace("%data%", github);
-
-var twitter = "@kkling01"
-var formattedtwitter = HTMLtwitter.replace("%data%", twitter);
-
-var locale = "Atlanta"
-var formattedlocation = HTMLlocation.replace("%data%", locale);
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-$("#topContacts").append(formattedmobile);
-$("#topContacts").append(formattedemail);
-$("#topContacts").append(formattedgithub);
-$("#topContacts").append(formattedtwitter);
-$("#topContacts").append(formattedlocation);
-
-if(bio.skills.length > 0) {
+if (bio.skills.length > 0) {
 
 	$("#header").append(HTMLskillsStart);
 
@@ -111,11 +114,21 @@ if(bio.skills.length > 0) {
 	$("#skills").append(formattedSkill);
 }
 
-$("#footerContacts").append(formattedmobile);
-$("#footerContacts").append(formattedemail);
-$("#footerContacts").append(formattedgithub);
-$("#footerContacts").append(formattedtwitter);
-$("#footerContacts").append(formattedlocation);
+for (job in work.jobs) {
+	$("#workExperience").append(HTMLworkStart);
+
+	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
+	var formattedTitle = HTMLworkTitle.replace("%data%", work.jobs[job].title);
+	var formattedEmployerTitle = formattedEmployer + formattedTitle;
+
+	$(".work-entry:last").append(formattedEmployerTitle);
+}
+
+
+
+
+
+
 
 
 
