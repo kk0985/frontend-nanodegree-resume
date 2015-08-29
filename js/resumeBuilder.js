@@ -16,30 +16,6 @@ var bio = {
 	"display" : "function taking no parameters"
 }
 
-var formattedName = HTMLheaderName.replace("%data%", bio.Name);
-var formattedRole = HTMLheaderRole.replace("%data%", bio.Role);
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
-
-var formattedmobile = HTMLmobile.replace("%data%", bio.Contacts.mobile);
-var formattedemail = HTMLemail.replace("%data%", bio.Contacts.email);
-var formattedgithub = HTMLgithub.replace("%data%", bio.Contacts.github);
-var formattedtwitter = HTMLtwitter.replace("%data%", bio.Contacts.twitter);
-var formattedlocation = HTMLlocation.replace("%data%", bio.Contacts.location);
-$("#topContacts").append(formattedmobile);
-$("#topContacts").append(formattedemail);
-$("#topContacts").append(formattedgithub);
-$("#topContacts").append(formattedtwitter);
-$("#topContacts").append(formattedlocation);
-
-
-var formattedbioPic = HTMLbioPic.replace("%data%", bio.bioPic);
-var formattedwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
-var formattedskills = HTMLskills.replace("%data%", bio.skills);
-$("#topContacts").append(formattedbioPic);
-$("#topContacts").append(formattedwelcomeMsg);
-$("#topContacts").append(formattedskills);
 
 var work = {
 "jobs" : [
@@ -67,7 +43,7 @@ var education = {
 			"location": "Elgin, IL, USA",
 			"degree": "Associates",
 			"majors": ["Business Communications"],
-			"dates": "1985",
+			"dates": 1985,
 			"url": "www.elgin.edu"
 		}
 	]
@@ -76,16 +52,63 @@ var education = {
 		{
 			"title": "JavaScript Basics",
 			"school": "Udacity",
-			"date": "2015",
+			"dates": 2015,
 			"url": "www.udacity.com"
 		},
 		{
 			"title": "HTML & CSS",
 			"school": "Udacity",
-			"date": "2015",
+			"dates": 2015,
 			"url": "www.udacity.com"
 		}
 	]
+}
+
+var projects
+
+var name = "Kris Klingberg"
+var formattedName = HTMLheaderName.replace("%data%", name);
+
+var role = "Web Developer"
+var formattedRole = HTMLheaderRole.replace("%data%", role);
+
+var mobile = "678-427-1056"
+var formattedmobile = HTMLmobile.replace("%data%", mobile);
+
+var email = "kris.klingberg@gmail.com"
+var formattedemail = HTMLemail.replace("%data%", email);
+
+var github = "kk0985"
+var formattedgithub = HTMLgithub.replace("%data%", github);
+
+var twitter = "@kkling01"
+var formattedtwitter = HTMLtwitter.replace("%data%", twitter);
+
+var locale = "Atlanta"
+var formattedlocation = HTMLlocation.replace("%data%", locale);
+
+$("#header").prepend(formattedRole);
+$("#header").prepend(formattedName);
+$("#topContacts").append(formattedmobile);
+$("#topContacts").append(formattedemail);
+$("#topContacts").append(formattedgithub);
+$("#topContacts").append(formattedtwitter);
+$("#topContacts").append(formattedlocation);
+
+if(bio.skills.length > 0) {
+
+	$("#header").append(HTMLskillsStart);
+
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills [0]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills [1]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills [2]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills [3]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills [4]);
+	$("#skills").append(formattedSkill);
 }
 
 $("#footerContacts").append(formattedmobile);
