@@ -1,15 +1,7 @@
-var name = "Kris Klingberg";
-var formattedName = HTMLheaderName.replace("%data%", name);
-var role = "Web Developer";
-var formattedRole = HTMLheaderRole.replace("%data%", role);
-
-$("#header").prepend(formattedRole);
-$("#header").prepend(formattedName);
-
 var bio = {
 	"Name" : "Kris Klingberg",
 	"Role" : "Web Developer",
-	"Contacts" : {
+	"contacts" : {
 		"mobile" : "678-427-1056",
 		"email" : "kris.klingberg@gmail.com",
 		"github" : "kk0985",
@@ -20,27 +12,8 @@ var bio = {
 	"skills" : [
 		"teaching","coaching","consultative selling","JS","HTML & CSS"
 	],
-	"bioPic" : "images/me.jpg",
+	"bioPic" : "images/me.jpg"
 }
-
-var mobile = "678-427-1056";
-var formattedmobile = HTMLmobile.replace("%data%", mobile);
-var email = "kris.klingberg@gmail.com";
-var formattedemail = HTMLemail.replace("%data%", email);
-var github = "kk0985";
-var formattedgithub = HTMLgithub.replace("%data%", github);
-var twitter = "@kkling01";
-var formattedtwitter = HTMLtwitter.replace("%data%", twitter);
-var locale = "Atlanta";
-var formattedlocation = HTMLlocation.replace("%data%", locale);
-
-
-$("#topContacts").append(formattedmobile);
-$("#topContacts").append(formattedemail);
-$("#topContacts").append(formattedgithub);
-$("#topContacts").append(formattedtwitter);
-$("#topContacts").append(formattedlocation);
-
 
 var work = {
 "jobs" : [
@@ -89,13 +62,19 @@ var education = {
 	]
 }
 
-var projects
+var projects = {
+	"projects" : [
+		{
+			"title": "How I start My Day",
+			"dates": 2015,
+			"description": "From design mockup to design in HTML & CSS",
+			"images": "images/Mug.jpg"
+		}
+	]
+}
 
-$("#footerContacts").append(formattedmobile);
-$("#footerContacts").append(formattedemail);
-$("#footerContacts").append(formattedgithub);
-$("#footerContacts").append(formattedtwitter);
-$("#footerContacts").append(formattedlocation);
+
+
 
 if (bio.skills.length > 0) {
 
@@ -131,57 +110,3 @@ function displayWork () {
 }
 
 displayWork();
-
-$(document).click(function(loc) {
-	var x = loc.pageX;
-	var y = loc.pageY;
-
-	logClicks(x,y);
-});
-
-function locationizer(work_obj) {
-	var locationArray = [];
-
-	for (job in work_obj.jobs) {
-		var newLocation = work_obj.jobs[job].location;
-		locationArray.push(newLocation);
-	}
-
-	return locationArray;
-}
-
-function inName(name) {
-	name = name.trim().split(" ");
-	console.log(name);
-	name[1] = name[1].toUpperCase();
-	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
-
-	return name[0] +" "+name[1];
-}
-
-$('#main').append(internationalizeButton);
-
-$("#map-Div").append(googleMap);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
