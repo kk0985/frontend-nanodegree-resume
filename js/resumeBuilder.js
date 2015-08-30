@@ -38,6 +38,22 @@ $("#header").append(formattedbioPic);
 $("#header").append(formattedwelcomeMsg);
 
 
+if (bio.skills.length > 0) {
+
+	$("#header").append(HTMLskillsStart);
+
+	var formattedSkill = HTMLskills.replace("%data%", bio.skills [0]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills [1]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills [2]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills [3]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills [4]);
+	$("#skills").append(formattedSkill);
+}
+
 var work = {
 "jobs" : [
 		{
@@ -55,62 +71,6 @@ var work = {
 			"description" : "Acquistion specialist responsible for adding new logos and for growth within existing businesses."
 		}
 	]
-}
-
-var education = {
-	"schools" : [
-		{
-			"name": "Elgin Community College",
-			"location": "Elgin, IL, USA",
-			"degree": "Associates",
-			"majors": ["Business Communications"],
-			"dates": 1985,
-			"url": "www.elgin.edu"
-		}
-	]
-	,
-	"onlineCourses": [
-		{
-			"title": "JavaScript Basics",
-			"school": "Udacity",
-			"dates": 2015,
-			"url": "www.udacity.com"
-		},
-		{
-			"title": "HTML & CSS",
-			"school": "Udacity",
-			"dates": 2015,
-			"url": "www.udacity.com"
-		}
-	]
-}
-
-var projects = {
-	"projects" : [
-		{
-			"title": "How I start My Day",
-			"dates": 2015,
-			"description": "From design mockup to design in HTML & CSS",
-			"images": "images/Mug.jpg"
-		}
-	]
-}
-
-
-if (bio.skills.length > 0) {
-
-	$("#header").append(HTMLskillsStart);
-
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills [0]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills [1]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills [2]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills [3]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills [4]);
-	$("#skills").append(formattedSkill);
 }
 
 function displayWork () {
@@ -132,6 +92,91 @@ function displayWork () {
 
 displayWork();
 
+var education = {
+	"schools" : [
+		{
+			"name": "Elgin Community College",
+			"location": "Elgin, IL, USA",
+			"degree": "Associates",
+			"majors": ["Business Communications"],
+			"dates": 1985,
+			"url": "www.elgin.edu"
+		}
+	]
+	,
+	"onlineCourses": [
+		{
+			"title": "JavaScript Basics",
+			"school": "Udacity",
+			"dates": 2015,
+			"url": "www.udacity.com/course/ud804"
+		},
+		{
+			"title": "HTML & CSS",
+			"school": "Udacity",
+			"dates": 2015,
+			"url": "www.udacity.com/course/ud304"
+		}
+	]
+}
+
+function displayEducation () {
+	for (school in education.schools) {
+		$("#education").append(HTMLschoolStart);
+
+	var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
+	$(".education-entry:last").append(formattedName);
+
+	var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
+	$(".education-entry:last").append(formattedDegree);
+
+	var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
+	$(".education-entry:last").append(formattedDates);
+
+	var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
+	$(".education-entry:last").append(formattedLocation);
+
+	var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
+	$(".education-entry:last").append(formattedMajor);
+
+	var formattedURL = HTMLschoolURL.replace("%data%", education.schools[school].url);
+	$(".education-entry:last").append(formattedURL);
+
+	$("#education").append(HTMLonlineClasses);
+
+	for (course in education.onlineCourses) {
+		$("#education").append(HTMLschoolStart);
+
+	var formattedonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
+	$(".education-entry:last").append(formattedonlineTitle);
+
+	var formattedonlineSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
+	$(".education-entry:last").append(formattedonlineSchool);
+
+	var formattedonlineDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
+	$(".education-entry:last").append(formattedonlineDates);
+
+	var formattedonlineURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
+	$(".education-entry:last").append(formattedonlineURL);
+	}
+	}
+}
+
+displayEducation();
+
+
+
+var projects = {
+	"projects" : [
+		{
+			"title": "How I start My Day",
+			"dates": 2015,
+			"description": "From design mockup to design in HTML & CSS",
+			"images": "images/Mug.jpg"
+		}
+	]
+}
+
 function displayProjects () {
 	for (project in projects.projects) {
 	$("#projects").append(HTMLprojectStart);
@@ -151,27 +196,4 @@ function displayProjects () {
 }
 
 displayProjects();
-
-function displayEducation () {
-	for (school in education.schools) {
-		$("#education").append(HTMLschoolStart);
-
-	var formattedName = HTMLschoolName.replace("%data%", education.school[school].name);
-	$(".education-entry:last").append(formattedName);
-
-	var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-	$(".education-entry:last").append(formattedDegree);
-
-	var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
-	$(".education-entry:last").append(formattedDates);
-
-	var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].location);
-	$(".education-entry:last").append(formattedLocation);
-
-	var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].majors);
-	$(".education-entry:last").append(formattedMajor);
-	}
-}
-
-displayEducation();
 
