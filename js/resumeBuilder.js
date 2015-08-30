@@ -38,6 +38,12 @@ bio.display = function() {
 	$("#header").append(formattedbioPic);
 	$("#header").append(formattedwelcomeMsg);
 
+	$("#footerContacts").append(formattedmobile);
+	$("#footerContacts").append(formattedemail);
+	$("#footerContacts").append(formattedgithub);
+	$("#footerContacts").append(formattedtwitter);
+	$("#footerContacts").append(formattedlocation);
+
 
 	if (bio.skills.length > 0) {
 
@@ -216,3 +222,6 @@ projects.display = function() {
 }
 
 projects.display();
+
+$("#map-div").append(googleMap);
+
