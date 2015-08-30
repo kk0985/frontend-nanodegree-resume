@@ -21,10 +21,7 @@ var bio = {
 		"teaching","coaching","consultative selling","JS","HTML & CSS"
 	],
 	"bioPic" : "images/me.jpg",
-	"display" : "function taking no parameters"
 }
-
-
 
 var mobile = "678-427-1056";
 var formattedmobile = HTMLmobile.replace("%data%", mobile);
@@ -37,11 +34,13 @@ var formattedtwitter = HTMLtwitter.replace("%data%", twitter);
 var locale = "Atlanta";
 var formattedlocation = HTMLlocation.replace("%data%", locale);
 
+
 $("#topContacts").append(formattedmobile);
 $("#topContacts").append(formattedemail);
 $("#topContacts").append(formattedgithub);
 $("#topContacts").append(formattedtwitter);
 $("#topContacts").append(formattedlocation);
+
 
 var work = {
 "jobs" : [
@@ -114,7 +113,8 @@ if (bio.skills.length > 0) {
 	$("#skills").append(formattedSkill);
 }
 
-for (job in work.jobs) {
+function displayWork () {
+	for (job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 
 	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -127,7 +127,43 @@ for (job in work.jobs) {
 
 	var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 	$(".work-entry:last").append(formattedDescription);
+	}
 }
+
+displayWork();
+
+$(document).click(function(loc) {
+	var x = loc.pageX;
+	var y = loc.pageY;
+
+	logClicks(x,y);
+});
+
+function locationizer(work_obj) {
+	var locationArray = [];
+
+	for (job in work_obj.jobs) {
+		var newLocation = work_obj.jobs[job].location;
+		locationArray.push(newLocation);
+	}
+
+	return locationArray;
+}
+
+function inName(name) {
+	name = name.trim().split(" ");
+	console.log(name);
+	name[1] = name[1].toUpperCase();
+	name[0] = name[0].slice(0,1).toUpperCase() + name[0].slice(1).toLowerCase();
+
+	return name[0] +" "+name[1];
+}
+
+$('#main').append(internationalizeButton);
+
+$("#map-Div").append(googleMap);
+
+
 
 
 
