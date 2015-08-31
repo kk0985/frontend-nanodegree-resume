@@ -12,8 +12,8 @@ var bio = {
 	"skills" : [
 		"teaching","coaching","consultative selling","JS","HTML & CSS"
 	],
-	"bioPic" : "images/me.jpg"
-}
+	"bioPic" : "images/me.jpeg"
+};
 
 bio.display = function() {
 	var formattedName = HTMLheaderName.replace("%data%", bio.Name);
@@ -30,35 +30,21 @@ bio.display = function() {
 	var formattedbioPic = HTMLbioPic.replace("%data%", bio.bioPic);
 	var formattedwelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
 
-	$("#topContacts").append(formattedmobile);
-	$("#topContacts").append(formattedemail);
-	$("#topContacts").append(formattedgithub);
-	$("#topContacts").append(formattedtwitter);
-	$("#topContacts").append(formattedlocation);
+	$("#topContacts, #footerContacts").append(formattedmobile);
+	$("#topContacts, #footerContacts").append(formattedemail);
+	$("#topContacts, #footerContacts").append(formattedgithub);
+	$("#topContacts, #footerContacts").append(formattedtwitter);
+	$("#topContacts, #footerContacts").append(formattedlocation);
 	$("#header").append(formattedbioPic);
 	$("#header").append(formattedwelcomeMsg);
-
-	$("#footerContacts").append(formattedmobile);
-	$("#footerContacts").append(formattedemail);
-	$("#footerContacts").append(formattedgithub);
-	$("#footerContacts").append(formattedtwitter);
-	$("#footerContacts").append(formattedlocation);
-
 
 	if (bio.skills.length > 0) {
 
 	$("#header").append(HTMLskillsStart);
-
-	var formattedSkill = HTMLskills.replace("%data%", bio.skills [0]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills [1]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills [2]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills [3]);
-	$("#skills").append(formattedSkill);
-	formattedSkill = HTMLskills.replace("%data%", bio.skills [4]);
-	$("#skills").append(formattedSkill);
+	for (var i in bio.skills) {
+    var formattedSkills = HTMLskills.replace("%data%", bio.skills[i]);
+    $("#skills").append(formattedSkills);
+}
 }
 
 }
@@ -82,12 +68,12 @@ var work = {
 			"description" : "Acquistion specialist responsible for adding new logos and for growth within existing businesses."
 		}
 	]
-}
+};
 
 function locationizer(work_obj) {
     var locationArray = [];
 
-	for (job in work_obj.jobs) {
+	for (var job in work_obj.jobs) {
 		var newLocation = work_obj.jobs[job].location;
 		locationArray.push(newLocation);
 	}
@@ -96,7 +82,7 @@ function locationizer(work_obj) {
 }
 
 work.display = function() {
-	for (job in work.jobs) {
+	for (var job in work.jobs) {
 	$("#workExperience").append(HTMLworkStart);
 
 	var formattedEmployer = HTMLworkEmployer.replace("%data%", work.jobs[job].employer);
@@ -140,10 +126,10 @@ var education = {
 			"url": "www.udacity.com/course/ud304"
 		}
 	]
-}
+};
 
 education.display = function() {
-	for (school in education.schools) {
+	for (var school in education.schools) {
 		$("#education").append(HTMLschoolStart);
 
 	var formattedName = HTMLschoolName.replace("%data%", education.schools[school].name);
@@ -166,7 +152,7 @@ education.display = function() {
 
 	$("#education").append(HTMLonlineClasses);
 
-	for (course in education.onlineCourses) {
+	for (var course in education.onlineCourses) {
 		$("#education").append(HTMLschoolStart);
 
 	var formattedonlineTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
@@ -201,10 +187,10 @@ var projects = {
 			"images": "images/Resume.jpg"
 		}
 	]
-}
+};
 
 projects.display = function() {
-	for (project in projects.projects) {
+	for (var project in projects.projects) {
 		$("#projects").append(HTMLprojectStart);
 
 		var formattedTitle = HTMLprojectTitle.replace("%data%", projects.projects[project].title);
@@ -231,4 +217,3 @@ $(document).click(function(loc) {
 
 	logClicks(x,y);
 });
-
