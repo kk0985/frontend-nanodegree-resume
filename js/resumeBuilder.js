@@ -210,10 +210,3 @@ projects.display = function() {
 projects.display();
 
 $("#map-div").append(googleMap);
-
-$(document).click(function(loc) {
-	var x = loc.pageX;
-	var y = loc.pageY;
-
-	logClicks(x,y);
-});
